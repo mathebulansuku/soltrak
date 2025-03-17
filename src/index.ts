@@ -30,8 +30,20 @@ app.get("/", async (req, res) => {
     const response = await axios.get(DATA_URL);
     const data = response.data;
     res.json(data);
+
+    for (const item of data) {
+      const { timestamp, temp, dni, ghi, humidity, pressure, wind, power } =
+        item;
+
+      await db.query(
+        "INSERT INTO solcast_data(timestamp, temp, dni, ghi, humidity, pressure, wind, power) VALUES($1, $2, $3, $4,$5, $6, $7, $8)",
+        [timestamp, temp, dni, ghi, humidity, pressure, wind, power]
+      );
+    }
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+db.query("INSERT INTO solcast_data");
