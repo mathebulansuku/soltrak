@@ -25,17 +25,25 @@ async function fetchData() {
   try {
     const response = await axios.get(DATA_URL);
     const data = response.data;
+
+    return data;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 }
 
-async function insertData(data:any){
+fetchData();
+
+async function insertData() {
   try {
-
     const data = await fetchData();
-    for (const item of data) {
 
+    if (data.length === 0) {
+      console.error("No data to insert:", data);
+      return;
+    }
+
+    for (const item of data) {
       const {
         timestamp,
         temperature,
@@ -61,13 +69,29 @@ async function insertData(data:any){
         continue;
       }
 
-      await db.query(
-        "INSERT INTO solcast_data (timestamp, temperature, dni, ghi, humidity, pressure, wind, powerPV) VALUES($1, $2, $3, $4,$5, $6, $7, $8)",
-        [timestamp, temperature, dni, ghi, humidity, pressure, wind, powerPV]
-      );
+      try {
+        await db.query(
+          "INSERT INTO solcast_data (timestamp, temperature, dni, ghi, humidity, pressure, wind, powerPV) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
+          [timestamp, temperature, dni, ghi, humidity, pressure, wind, powerPV]
+        );
+      } catch (error) {
+        console.error("Error inserting data:", error);
+      }
     }
+  } catch (error) {
+    console.error("Error inserting data:", error);
   }
 }
+
+app.get("/", async (req, res) => {
+  try {
+    await insertData();
+    res.send("Data inserted successfully");
+  } catch (error) {
+    console.error("Error inserting data:", error);
+    res.status(500).send("Error inserting data");
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
