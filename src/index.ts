@@ -56,15 +56,6 @@ async function insertData() {
         console.warn("Skipping invalid entry:", item);
         continue;
       }
-
-      try {
-        await db.query(
-          "INSERT INTO solcast_data (timestamp, temperature, dni, ghi, humidity, pressure, wind, powerPV) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
-          [timestamp, temperature, dni, ghi, humidity, pressure, wind, powerPV]
-        );
-      } catch (error) {
-        console.error("Error inserting data:", error);
-      }
     }
   } catch (error) {
     console.error("Error inserting data:", error);
