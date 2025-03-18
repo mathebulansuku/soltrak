@@ -10,26 +10,18 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
-    "@types/body-parser": "^1.19.5",
-    "@types/compression": "^1.7.5",
-    "@types/cookie-parser": "^1.4.8",
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.0",
-    "@types/pg": "^8.11.11",
-    "nodemon": "^3.1.9",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
-  },
   "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/nodemon": "^1.19.6",
     "axios": "^1.8.3",
-    "body-parser": "^1.20.3",
-    "compression": "^1.8.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "pg": "^8.14.0",
-    "postgres": "^3.4.5"
+    "nodemon": "^3.1.9",
+    "pg": "^8.14.1"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
   }
 }
