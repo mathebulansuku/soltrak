@@ -1,4 +1,21 @@
 import { Client } from "pg";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const db = new Client({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: parseInt(process.env.DB_PORT),
+});
+
+db.connect()
+  .then(() => console.log("Database connected"))
+  .catch((err) => {
+    console.error("Failed to connect to the database:", err);
+  });
 
 type SolarData = {
   timestamp: Date;
@@ -10,18 +27,6 @@ type SolarData = {
   wind_speed_10m: number;
   pv_power_rooftop: number;
 };
-
-const db = new Client({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: parseInt(process.env.DB_PORT),
-});
-
-db.connect().catch((err) => {
-  console.error("Failed to connect to the database:", err);
-});
 
 export async function insertSolarData(data: SolarData) {
   try {
