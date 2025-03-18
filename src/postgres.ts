@@ -19,10 +19,10 @@ db.connect()
   });
 
 type SolarData = {
-  timestamp: Date;
+  period_end: Date;
   air_temp: number;
   dni: number;
-  dhi: number;
+  ghi: number;
   relative_humidity: number;
   surface_pressure: number;
   wind_speed_10m: number;
@@ -34,10 +34,10 @@ export async function insertSolarData(data: SolarData) {
     await db.query(
       "INSERT INTO solcast_data (timestamp, air_temp, dni, dhi, relative_humidity, surface_pressure, wind_speed_10m, pv_power_rooftop) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
       [
-        data.timestamp,
+        data.period_end,
         data.air_temp,
         data.dni,
-        data.dhi,
+        data.ghi,
         data.relative_humidity,
         data.surface_pressure,
         data.wind_speed_10m,
