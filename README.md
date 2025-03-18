@@ -14,10 +14,10 @@ Before running the application, ensure you have the following installed:
 - cd repository-folder
 
 ### 2. Install Dependencies
-   npm install
+- npm install
 
 ### 3.Configure Environment Variables
-Create a .env file in the project root and add the following variables
+- Create a .env file in the project root and add the following variables
 
 ### PostgreSQL Database Configuration
 - DB_USER=your_db_user
