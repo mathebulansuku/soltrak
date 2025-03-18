@@ -4,9 +4,9 @@
 ## Prerequisites
 Before running the application, ensure you have the following installed:
 
-Node.js (v16+ recommended)
-PostgreSQL
-Git
+- Node.js (v16+ recommended)
+- PostgreSQL
+- Git
 
 ### 1. **Clone  the Repository**
 
