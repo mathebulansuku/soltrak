@@ -1,7 +1,7 @@
 # Solar Data Ingestion Service
 ## This service fetches solar radiation, weather, and rooftop PV power data from an external API, processes it, and stores it in a PostgreSQL database.
 
-##Prerequisites
+## Prerequisites
 Before running the application, ensure you have the following installed:
 
 Node.js (v16+ recommended)
