@@ -18,3 +18,9 @@ type data = {
     pv_power_rooftop: number;
   }[];
 };
+
+export const handler = async () => {
+  const response = await axios.get(DATA_URL);
+  const weatherData = response.data.weatherData[0];
+  const powerData = response.data.powerPV[0];
+};
