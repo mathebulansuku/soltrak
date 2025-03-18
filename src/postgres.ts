@@ -32,7 +32,7 @@ type SolarData = {
 export async function insertSolarData(data: SolarData) {
   try {
     await db.query(
-      "INSERT INTO solcast_data (timestamp, air_temp, dni, dhi, relative_humidity, surface_pressure, wind_speed_10m, pv_power_rooftop) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
+      "INSERT INTO solcast_data (timestamp, air_temp, dni, ghi, relative_humidity, surface_pressure, wind_speed_10m, pv_power_rooftop) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
       [
         data.period_end,
         data.air_temp,

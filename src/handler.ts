@@ -37,6 +37,8 @@ export const handler = async () => {
       pv_power_rooftop: weatherData.pv_power_rooftop * 1000,
     };
 
+    console.log(processedData);
+
     await insertSolarData(processedData);
 
     return {
@@ -51,8 +53,6 @@ export const handler = async () => {
     };
   }
 };
-
-handler();
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
