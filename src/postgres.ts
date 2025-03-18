@@ -15,6 +15,7 @@ db.connect()
   .then(() => console.log("Database connected"))
   .catch((err) => {
     console.error("Failed to connect to the database:", err);
+    process.exit(1);
   });
 
 type SolarData = {
@@ -31,8 +32,7 @@ type SolarData = {
 export async function insertSolarData(data: SolarData) {
   try {
     await db.query(
-      "INSERT INTO solcast_data (timestamp, air_temp, dni, dhi, relative_humidity, surface_pressure, wind_speed_10m, pv_power_rooftop) VALUES($1, $2, $3, $4, $5, $6, $7, $8)"
-    ),
+      "INSERT INTO solcast_data (timestamp, air_temp, dni, dhi, relative_humidity, surface_pressure, wind_speed_10m, pv_power_rooftop) VALUES($1, $2, $3, $4, $5, $6, $7, $8)",
       [
         data.timestamp,
         data.air_temp,
@@ -42,7 +42,8 @@ export async function insertSolarData(data: SolarData) {
         data.surface_pressure,
         data.wind_speed_10m,
         data.pv_power_rooftop,
-      ];
+      ]
+    );
   } catch (error) {
     console.error("Error inserting data:", error);
   }
