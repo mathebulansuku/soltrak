@@ -20,20 +20,33 @@ type data = {
 };
 
 export const handler = async () => {
-  const response = await axios.get(DATA_URL);
-  const weatherData = response.data.weatherData[0];
-  const powerData = response.data.powerPV[0];
+  try {
+    const response = await axios.get(DATA_URL);
+    const weatherData = response.data.weatherData[0];
+    const powerData = response.data.powerPV[0];
 
-  const processedData = {
-    timestamp: new Date(),
-    air_temp: weatherData.air_temp,
-    dni: weatherData.dni,
-    dhi: weatherData.dhi,
-    relative_humidity: weatherData.relative_humidity,
-    surface_pressure: weatherData.surface_pressure,
-    wind_speed_10m: weatherData.wind_speed_10m,
-    pv_power_rooftop: powerData.pv_power_rooftop * 1000,
-  };
+    const processedData = {
+      timestamp: new Date(),
+      air_temp: weatherData.air_temp,
+      dni: weatherData.dni,
+      dhi: weatherData.dhi,
+      relative_humidity: weatherData.relative_humidity,
+      surface_pressure: weatherData.surface_pressure,
+      wind_speed_10m: weatherData.wind_speed_10m,
+      pv_power_rooftop: powerData.pv_power_rooftop * 1000,
+    };
 
-  await insertSolarData(processedData);
+    await insertSolarData(processedData);
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "Data saved successfully" }),
+    };
+  } catch (error) {
+    console.error("Error:", error);
+    return {
+      statusCode: 401,
+      body: JSON.stringify({ error: "You are not authorized!" }),
+    };
+  }
 };
