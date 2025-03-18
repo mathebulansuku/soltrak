@@ -10,8 +10,8 @@ Before running the application, ensure you have the following installed:
 
 ### 1. **Clone  the Repository**
 
-git clone <repository-url>
-cd <repository-folder>
+- git clone repository-url
+- cd repository-folder
 
 ### 2. Install Dependencies
    npm install
