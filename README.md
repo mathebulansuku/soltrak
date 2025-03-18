@@ -1,5 +1,5 @@
 # Solar Data Ingestion Service
-## This service fetches solar radiation, weather, and rooftop PV power data from an external API, processes it, and stores it in a PostgreSQL database.
+### This service fetches solar radiation, weather, and rooftop PV power data from an external API, processes it, and stores it in a PostgreSQL database.
 
 ## Prerequisites
 Before running the application, ensure you have the following installed:
