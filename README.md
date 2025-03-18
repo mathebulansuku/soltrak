@@ -24,7 +24,7 @@ Create a .env file in the project root and add the following variables
 - DB_HOST=localhost
 - DB_NAME=your_db_name
 - DB_PASSWORD=your_db_password
-- DB_PORT=5432  # Default PostgreSQL port
+- DB_PORT=5432
 
 
 ### 4. Create Table in PostgreSQL to store data.
