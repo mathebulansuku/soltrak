@@ -1,5 +1,5 @@
-#Solar Data Ingestion Service
-This service fetches solar radiation, weather, and rooftop PV power data from an external API, processes it, and stores it in a PostgreSQL database.
+# Solar Data Ingestion Service
+## This service fetches solar radiation, weather, and rooftop PV power data from an external API, processes it, and stores it in a PostgreSQL database.
 
 ##Prerequisites
 Before running the application, ensure you have the following installed:
@@ -8,7 +8,7 @@ Node.js (v16+ recommended)
 PostgreSQL
 Git
 
-### 1. Clone  the Repository
+### 1. **Clone  the Repository**
 
 git clone <repository-url>
 cd <repository-folder>
@@ -16,7 +16,7 @@ cd <repository-folder>
 ### 2. Install Dependencies
    npm install
 
-3.Configure Environment Variables
+### 3.Configure Environment Variables
 Create a .env file in the project root and add the following variables
 
 ### PostgreSQL Database Configuration
