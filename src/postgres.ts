@@ -25,5 +25,20 @@ db.connect().catch((err) => {
 
 export async function insertSolarData(data: SolarData) {
   try {
-  } catch (error) {}
+    await db.query(
+      "INSERT INTO solcast_data (timestamp, air_temp, dni, dhi, relative_humidity, surface_pressure, wind_speed_10m, pv_power_rooftop) VALUES($1, $2, $3, $4, $5, $6, $7, $8)"
+    ),
+      [
+        data.timestamp,
+        data.air_temp,
+        data.dni,
+        data.dhi,
+        data.relative_humidity,
+        data.surface_pressure,
+        data.wind_speed_10m,
+        data.pv_power_rooftop,
+      ];
+  } catch (error) {
+    console.error("Error inserting data:", error);
+  }
 }
