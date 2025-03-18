@@ -1,25 +1,25 @@
-Solar Data Ingestion Service
+#Solar Data Ingestion Service
 This service fetches solar radiation, weather, and rooftop PV power data from an external API, processes it, and stores it in a PostgreSQL database.
 
-#Prerequisites
+##Prerequisites
 Before running the application, ensure you have the following installed:
 
 Node.js (v16+ recommended)
 PostgreSQL
 Git
 
-1. Clone  the Repository
+### 1. Clone  the Repository
 
 git clone <repository-url>
 cd <repository-folder>
 
-2. Install Dependencies
+### 2. Install Dependencies
    npm install
 
 3.Configure Environment Variables
 Create a .env file in the project root and add the following variables
 
-# PostgreSQL Database Configuration
+### PostgreSQL Database Configuration
 DB_USER=your_db_user
 DB_HOST=localhost
 DB_NAME=your_db_name
@@ -27,7 +27,7 @@ DB_PASSWORD=your_db_password
 DB_PORT=5432  # Default PostgreSQL port
 
 
-4. Create Table in PostgreSQL to store data.
+### 4. Create Table in PostgreSQL to store data.
 
 CREATE TABLE solcast_data (
     id SERIAL PRIMARY KEY,
@@ -41,5 +41,5 @@ CREATE TABLE solcast_data (
     pv_power_rooftop FLOAT
 );
 
-5. Start the Application
+### 5. Start the Application
    npm start
